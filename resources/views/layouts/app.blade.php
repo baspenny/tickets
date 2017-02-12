@@ -12,8 +12,9 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.3.1/css/bulma.css">
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Scripts -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     <script>
         window.Laravel = {!! json_encode([
             'csrfToken' => csrf_token(),
@@ -45,7 +46,12 @@
                             {{csrf_field()}}
                         </p>
                         <p class="nav-item">
-                            <button type="submit" class="button is-primary">Uitloggen</button>
+                            <a type="submit" class="button is-primary">
+                                <span class="icon">
+                                    <i class="fa fa-sign-out"></i>
+                                </span>
+                                <span>Uitloggen</span>
+                            </a>
                         </p>
                     </form>
                 </div>
@@ -61,6 +67,7 @@
 </div>
 
 <!-- Scripts -->
-<script src="/js/app.js"></script>
+{{--<script src="/js/app.js"></script>--}}
+
 </body>
 </html>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Ticket;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +24,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $chartData = [];
+        $chartData[] = Ticket::MyOpenTickets()->count();
+        $chartData[] = Ticket::AllOpenTickets()->count();
+
+        return view('home', compact('chartData'));
     }
 }
