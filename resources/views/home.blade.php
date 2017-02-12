@@ -12,6 +12,15 @@
                 </div>
             </div>
         </div>
+        <div class="columns">
+            <div class="column is-two-thirds">
+                <p>hallo</p>
+
+            </div>
+            <div class="column">
+                <p>Hellooooo</p>
+            </div>
+        </div>
     </div>
 </div>
 @endsection

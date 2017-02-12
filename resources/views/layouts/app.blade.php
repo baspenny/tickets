@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Tickets') }}</title>
 
     <!-- Styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.3.1/css/bulma.css">
@@ -23,16 +23,22 @@
 <body>
 <div id="app">
     <div class="nav">
-        <div class="container">
+
             @if (Auth::guest())
                 <div class="nav-left">
                     <a class="nav-item is-tab" href="{{ route('login') }}">Login</a>
                     <a class="nav-item is-tab" href="{{ route('register') }}">Register</a>
                 </div>
             @else
+                <div class="nav-left nav-menu">
+                    <a class="nav-item is-tab" href="/home">Dashboard</a>
+                    <a class="nav-item is-tab" href="/mytickets">My tickets</a>
+                    <a class="nav-item is-tab" href="/tickets">All open tickets</a>
+                </div>
+
                 <div class="nav-right">
                     <p class="nav-item">
-                        {{ Auth::user()->name }}
+                        {{ Auth::user()->first_name }} {{Auth::user()->infix }} {{Auth::user()->last_name }}
                     </p>
                     <form action="{{route('logout')}}" method="POST">
                         <p>
@@ -44,7 +50,7 @@
                     </form>
                 </div>
             @endif
-        </div>
+
     </div>
 
         <div class="container">
