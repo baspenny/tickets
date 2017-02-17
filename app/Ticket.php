@@ -26,4 +26,26 @@ class Ticket extends Model
     public function scopeMyOpenTickets($query) {
         return $query->whereRepId(Auth::user()->id);
     }
+
+    public function user()
+    {
+        return $this->hasOne('App\User', 'id', 'user_id');
+    }
+
+    public function rep()
+    {
+        return $this->hasOne('App\User', 'id', 'user_id');
+    }
+
+    public function state()
+    {
+        return $this->hasOne('App\State', 'id', 'state_id');
+    }
+//    public function logs()
+//    {
+//        return $this->hasMany('App\Log',)
+//    }
+
+
+
 }

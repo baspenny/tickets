@@ -32,4 +32,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function getFullNameAttribute()
+    {
+        return implode(' ', array_filter([$this->first_name, $this->infix, $this->last_name]));
+    }
 }

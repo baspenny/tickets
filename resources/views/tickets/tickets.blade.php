@@ -15,7 +15,7 @@
                     @foreach($tickets as $ticket)
                         <tr>
                         <td>
-                        {{$ticket->ticket_number}}
+                            <a href="/tickets/{{$ticket->id}}">{{$ticket->ticket_number}}</a>
                         </td>
                         </tr>
                     @endforeach

@@ -17,9 +17,13 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/mytickets', 'TicketController@myOpenTickets');
+
+
+Route::get('/tickets/create', 'TicketController@create');
 Route::get('/tickets', 'TicketController@AllOpenTickets');
 Route::post('/tickets', 'TicketController@store');
-Route::get('/tickets/create', 'TicketController@create');
+Route::get('/tickets/{id}', 'TicketController@show');
+
+Route::get('/mytickets', 'TicketController@myOpenTickets');
 
 Route::get('/home', 'HomeController@index');

@@ -25,9 +25,15 @@ class TicketController extends Controller
         return view('tickets.mytickets', compact('tickets'));
     }
 
-    public function create( )
+    public function create()
     {
         return view('tickets.create');
+    }
+
+    public function show($id)
+    {
+        $ticket = Ticket::find($id);
+        return view('tickets.ticket', compact('ticket'));
     }
 
     public function store(Request $request)
