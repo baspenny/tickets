@@ -41,10 +41,11 @@ class Ticket extends Model
     {
         return $this->hasOne('App\State', 'id', 'state_id');
     }
-//    public function logs()
-//    {
-//        return $this->hasMany('App\Log',)
-//    }
+
+    public function logs()
+    {
+        return $this->hasMany('App\Log', 'ticket_id', 'id');
+    }
 
 
 

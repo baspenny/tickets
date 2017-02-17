@@ -27,21 +27,24 @@
                 <div class="title">
                     This is the graph
                 </div>
-                <canvas id="myChart" width="100" height="100">
+                <canvas id="openTickets" width="100" height="100">
                 </canvas>
 
             </div>
-            <div class="column">
+            <div class="column is-half">
                 <div class="title">
-                    Info block or something...
+                    This is the graph
                 </div>
+                <canvas id="second" width="100" height="100">
+                </canvas>
+
             </div>
         </div>
     </div>
 </div>
     <script>
-        var ctx = document.getElementById('myChart');
-        var myChart = new Chart(ctx, {
+        var openTickets = document.getElementById('openTickets');
+        var openTickets = new Chart(openTickets, {
             type: 'bar',
             data: {
                 labels: ["Mine open", "All open"],
