@@ -12,7 +12,7 @@
                 </div>
                 <div>
                     <p class="control">
-                        <a href="/create" class="button is-primary">
+                        <a href="/tickets/create" class="button is-primary">
                             <span class="icon">
                                 <i class="fa fa-plus-square"></i>
                             </span>
