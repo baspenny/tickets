@@ -22,9 +22,11 @@ class Ticket extends Model
         return $query->whereTimeClosed(null);
     }
 
-
     public function scopeMyOpenTickets($query) {
-        return $query->whereRepId(Auth::user()->id);
+        return $query->where([
+            'rep_id' => Auth::user()->id,
+            'time_closed' => null]
+        );
     }
 
     public function user()

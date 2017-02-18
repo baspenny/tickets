@@ -6,11 +6,12 @@
 
             <div class="columns">
                 <div class="column">
-                    <div class="title">Ticket details</div>
+
                     <div class="tile is-ancestor">
                         <div class="tile is-4 is-parent">
                             <div class="tile is-child box">
                             <table class="table">
+                                <div class="title">Details</div>
                                 <tbody>
                                     <tr>
                                         <td>Ticket No:</td>
@@ -32,9 +33,19 @@
                             </table>
                             </div>
                         </div>
-                        <div class="tile is-parent">
+                        <div class="tile is-4 is-parent">
                             <div class="tile is-child box">
-
+                                <div class="title">Description</div>
+                                <div>
+                                    <p>
+                                        {{$ticket->description}}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tile is-4 is-parent">
+                            <div class="tile is-child box">
+                            <div class="title">Logging</div>
                             <table class="table ">
                                 <tbody>
                                 @foreach($ticket->logs as $log)

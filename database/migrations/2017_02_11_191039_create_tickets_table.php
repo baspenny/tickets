@@ -24,7 +24,7 @@ class CreateTicketsTable extends Migration
             $table->string('contact_tel_nr')->nullable();
             $table->integer('user_id')->nullable();
             $table->integer('rep_id')->nullable();
-            $table->timestamp('time_closed');
+            $table->timestamp('time_closed')->nullable();
             $table->timestamp('time_trigger')->nullable();
             $table->timestamps();
             $table->softDeletes();

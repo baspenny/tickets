@@ -31,7 +31,6 @@
         </div>
     </div>
 </div>
-{{dump($chartDataTicketStatus)}}
     <script>
         var element = document.getElementById('openTickets');
         var openTickets = new Chart(element, {
@@ -63,23 +62,29 @@
                 }
             }
         });
+
+
         var secondElement = document.getElementById('second');
         var second = new Chart(secondElement, {
                 type: 'pie',
                 data: {
-                    labels: ['Open', 'In progress', 'Closed'],
+                    labels: ['New', 'Assigned', 'In progress', 'On hold', 'Closed'],
                     datasets: [{
                         label: 'Ticket statussus',
-                        data: {{json_encode($chartDataTicketStatus)}},
+                        data: {{json_encode($chartDataTicketStatus['data'])}},
                         backgroundColor: [
                             'rgba(0, 209, 178, 0.2)',
                             'rgba(0, 153, 130, 0.2)',
-                            'rgba(0, 165, 49, 0.2)'
+                            'rgba(0, 165, 49, 0.2)',
+                            'rgba(0, 112, 49, 0.2)',
+                            'rgba(0, 156, 49, 0.2)'
                         ],
                         borderColor: [
                             'rgba(0, 209, 178, 1)',
                             'rgba(0, 153, 130, 1)',
-                            'rgba(0, 165, 49, 1)'
+                            'rgba(0, 165, 49, 1)',
+                            'rgba(0, 112, 49, 1)',
+                            'rgba(0, 156, 49, 1)'
                         ],
                         borderWidth: 1
                     }]

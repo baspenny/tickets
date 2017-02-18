@@ -29,9 +29,12 @@ class HomeController extends Controller
         $chartDataOpenTickets[] = Ticket::AllOpenTickets()->count();
 
         $chartDataTicketStatus = [];
-        $chartDataTicketStatus[] = Ticket::where('state_id', '=', 1)->count();
-        $chartDataTicketStatus[] = Ticket::where('state_id', '=', 2)->count();
-        $chartDataTicketStatus[] = Ticket::where('state_id', '=', 3)->count();
+        $chartDataTicketStatus['data'][] = Ticket::where('state_id', '=', 1)->count();
+        $chartDataTicketStatus['data'][] = Ticket::where('state_id', '=', 2)->count();
+        $chartDataTicketStatus['data'][] = Ticket::where('state_id', '=', 3)->count();
+        $chartDataTicketStatus['data'][] = Ticket::where('state_id', '=', 4)->count();
+        $chartDataTicketStatus['data'][] = Ticket::where('state_id', '=', 5)->count();
+        $chartDataTicketStatus['labels'] = "New, Assigned, In progress, On hold, Closed";
 
         return view('home', compact('chartDataOpenTickets', 'chartDataTicketStatus'));
     }
