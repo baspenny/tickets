@@ -11,19 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Auth::routes();
-
+Route::get('/', 'HomeController@index');
+Route::get('/home', 'HomeController@index');
 
 
 Route::get('/tickets/create', 'TicketController@create');
 Route::get('/tickets', 'TicketController@AllOpenTickets');
 Route::post('/tickets', 'TicketController@store');
 Route::get('/tickets/{id}', 'TicketController@show');
-
 Route::get('/mytickets', 'TicketController@myOpenTickets');
 
-Route::get('/home', 'HomeController@index');

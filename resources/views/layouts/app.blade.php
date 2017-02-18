@@ -13,6 +13,7 @@
     <!-- Styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.3.1/css/bulma.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
     <!-- Scripts -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     <script>
@@ -23,6 +24,16 @@
 </head>
 <body>
 <div id="app">
+    <section class="hero is-primary">
+        <div class="hero-body">
+            <div class="container">
+                <p class="title">
+                    <span  style="font-family: 'Pacifico', cursive; font-size: 50px;">TickMan</span>
+                </p>
+                <p class="subtitle">Everything you need to make them tick!!!</p>
+            </div>
+        </div>
+    </section>
     <div class="nav">
 
             @if (Auth::guest())
@@ -35,8 +46,15 @@
                     <a class="nav-item is-tab" href="/home">Dashboard</a>
                     <a class="nav-item is-tab" href="/mytickets">My tickets</a>
                     <a class="nav-item is-tab" href="/tickets">All open tickets</a>
+                    <p class="nav-item">
+                        <a href="/tickets/create" class="button is-primary">
+                            <span class="icon">
+                                <i class="fa fa-plus-square"></i>
+                            </span>
+                            <span>New Ticket</span>
+                        </a>
+                    </p>
                 </div>
-
                 <div class="nav-right">
                     <p class="nav-item">
                         {{ Auth::user()->first_name }} {{Auth::user()->infix }} {{Auth::user()->last_name }}
@@ -46,12 +64,12 @@
                             {{csrf_field()}}
                         </p>
                         <p class="nav-item">
-                            <a type="submit" class="button is-primary">
+                            <button type="submit" class="button is-primary">
                                 <span class="icon">
                                     <i class="fa fa-sign-out"></i>
                                 </span>
-                                <span>Uitloggen</span>
-                            </a>
+                                <span>Logout</span>
+                            </button>
                         </p>
                     </form>
                 </div>

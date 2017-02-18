@@ -24,10 +24,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $chartData = [];
-        $chartData[] = Ticket::MyOpenTickets()->count();
-        $chartData[] = Ticket::AllOpenTickets()->count();
+        $chartDataOpenTickets = [];
+        $chartDataOpenTickets[] = Ticket::MyOpenTickets()->count();
+        $chartDataOpenTickets[] = Ticket::AllOpenTickets()->count();
 
-        return view('home', compact('chartData'));
+        $chartDataTicketStatus = [];
+        $chartDataTicketStatus[] = Ticket::where('state_id', '=', 1)->count();
+        $chartDataTicketStatus[] = Ticket::where('state_id', '=', 2)->count();
+        $chartDataTicketStatus[] = Ticket::where('state_id', '=', 3)->count();
+
+        return view('home', compact('chartDataOpenTickets', 'chartDataTicketStatus'));
     }
 }
