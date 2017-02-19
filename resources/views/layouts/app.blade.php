@@ -16,6 +16,7 @@
     <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
     <!-- Scripts -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <script src="//cloud.tinymce.com/stable/tinymce.min.js"></script>
     <script>
         window.Laravel = {!! json_encode([
             'csrfToken' => csrf_token(),
@@ -46,15 +47,8 @@
                     <a class="nav-item is-tab" href="/home">Dashboard</a>
                     <a class="nav-item is-tab" href="/mytickets">My tickets</a>
                     <a class="nav-item is-tab" href="/tickets">All open tickets</a>
-                    <p class="nav-item">
-                        <a href="/tickets/create" class="button is-primary">
-                            <span class="icon">
-                                <i class="fa fa-plus-square"></i>
-                            </span>
-                            <span>New Ticket</span>
-                        </a>
-                    </p>
                 </div>
+
                 <div class="nav-right">
                     <p class="nav-item">
                         {{ Auth::user()->first_name }} {{Auth::user()->infix }} {{Auth::user()->last_name }}

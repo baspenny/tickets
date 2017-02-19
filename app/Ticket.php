@@ -36,7 +36,7 @@ class Ticket extends Model
 
     public function rep()
     {
-        return $this->hasOne('App\User', 'id', 'user_id');
+        return $this->hasOne('App\User', 'id', 'rep_id');
     }
 
     public function state()

@@ -38,7 +38,7 @@
                                 <div class="title">Description</div>
                                 <div>
                                     <p>
-                                        {{$ticket->description}}
+                                        {!! $ticket->description !!}
                                     </p>
                                 </div>
                             </div>
@@ -46,6 +46,15 @@
                         <div class="tile is-4 is-parent">
                             <div class="tile is-child box">
                             <div class="title">Logging</div>
+                                <form action="/tickets/{{$ticket->id}}/logs" method="POST">
+                                    {{csrf_field()}}
+                                    <div>
+                                        <textarea id="henk" name="sjaak"></textarea>
+                                    </div>
+                                    <button class="button is-primary" type="submit">
+                                        Save
+                                    </button>
+                                </form>
                             <table class="table ">
                                 <tbody>
                                 @foreach($ticket->logs as $log)
@@ -67,4 +76,5 @@
             </div>
         </div>
     </div>
+    <script>tinymce.init({ selector:'#henk' });</script>
 @endsection

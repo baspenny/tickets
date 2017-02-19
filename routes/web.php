@@ -16,6 +16,7 @@ Auth::routes();
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
 
+Route::post('/tickets/{id}/logs/', 'LogController@store');
 
 Route::get('/tickets/create', 'TicketController@create');
 Route::get('/tickets', 'TicketController@AllOpenTickets');

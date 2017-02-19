@@ -4,15 +4,26 @@
 <div class="section">
     <div class="container">
         <div class="columns">
-            <div class="column">
+            <div class="column is-one-third">
                 <div class="title">Dashboard</div>
                 <div class="content">
                     this is some intro text.. Maybe some anouncements or something...
+                    <p class="nav-item">
+                        <a href="/tickets/create" class="button is-primary">
+                            <span class="icon">
+                                <i class="fa fa-plus-square"></i>
+                            </span>
+                            <span>New Ticket</span>
+                        </a>
+                    </p>
                 </div>
+
+
+
             </div>
         </div>
         <div class="columns">
-            <div class="column is-half">
+            <div class="column is-one-third">
                 <div class="title">
                     Open ticket stats
                 </div>
@@ -20,7 +31,7 @@
                 </canvas>
 
             </div>
-            <div class="column is-half">
+            <div class="column is-one-third">
                 <div class="title">
                     Overview per status
                 </div>
