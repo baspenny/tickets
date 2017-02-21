@@ -22,6 +22,14 @@
                         <p class="control">
                             <textarea placeholder="Description" class="textarea" name="description"></textarea>
                         </p>
+                        <label class="label">Contact Name</label>
+                        <p class="control">
+                            <input type="text" class="input" name="contact_name">
+                        </p>
+                        <label class="label">Contact Phone Number</label>
+                        <p class="control">
+                            <input type="text" class="input" name="contact_tel_nr">
+                        </p>
                         <p class="control">
                             <button class="button is-primary">
                             <span class="icon">
@@ -35,4 +43,7 @@
             </div>
         </div>
     </div>
+    <script>
+
+    </script>
     @endsection

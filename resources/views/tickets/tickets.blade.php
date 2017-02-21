@@ -11,7 +11,7 @@
                         <tr>
                             <th>Ticket number</th>
                             <th>Title</th>
-                            <th>Description</th>
+                            <th>State</th>
                             <th>Rep
                             </th>
                         </tr>
@@ -25,10 +25,14 @@
                                 {{$ticket->title}}
                             </td>
                             <td>
-                                {{strlen($ticket->description) > 60 ? substr($ticket->description, 0 , 60) . '...' : $ticket->description}}
+                                {{$ticket->state->name}}
                             </td>
                             <td>
-                                {{$ticket->rep->FullName}}
+                                @if($ticket->rep)
+                                    {{$ticket->rep->FullName}}
+                                @else
+                                    N/A
+                                @endif
                             </td>
                         </tr>
                     @endforeach

@@ -15,8 +15,12 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
     <!-- Scripts -->
+    <script
+            src="https://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+            crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-    <script src="//cloud.tinymce.com/stable/tinymce.min.js"></script>
+    <script src="{{asset('/js/tinymce/tinymce.min.js')}}"></script
     <script>
         window.Laravel = {!! json_encode([
             'csrfToken' => csrf_token(),

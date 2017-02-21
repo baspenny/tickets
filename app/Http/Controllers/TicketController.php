@@ -36,11 +36,18 @@ class TicketController extends Controller
         return view('tickets.ticket', compact('ticket'));
     }
 
+    public function edit($id)
+    {
+        $ticket = Ticket::find($id);
+        dd($ticket);
+    }
+
     public function store(Request $request)
     {
         $ticket = new Ticket($request->all());
         $ticket->ticket_number = $this->getNewTicketNumber();
         $ticket->state_id = 1;
+
         $ticket->save();
         return back()->with('succes', 'Ticket '. $ticket->ticket_number.' created!');
     }

@@ -3,7 +3,11 @@
 @section('content')
     <div class="section">
         <div class="container">
-
+            <div class="columns">
+                <div class="column">
+                    <a href="/tickets/edit/{{$ticket->id}}"><button class="button is-primary">Edit Ticket</button></a>
+                </div>
+            </div>
             <div class="columns">
                 <div class="column">
 
@@ -19,11 +23,19 @@
                                     </tr>
                                     <tr>
                                         <td>Caller:</td>
-                                        <td>{{$ticket->user->FullName}}</td>
+                                        @if($ticket->user)
+                                            <td>{{$ticket->user->FullName}}</td>
+                                        @else
+                                            <td>N/A</td>
+                                        @endif
                                     </tr>
                                     <tr>
                                         <td>Telephone No:</td>
-                                        <td>{{$ticket->user->telephone_nr}}</td>
+                                        @if($ticket->user)
+                                            <td>{{$ticket->user->telephone_nr}}</td>
+                                        @else
+                                            <td>N/A</td>
+                                        @endif
                                     </tr>
                                     <tr>
                                         <td>Status</td>
@@ -48,12 +60,14 @@
                             <div class="title">Logging</div>
                                 <form action="/tickets/{{$ticket->id}}/logs" method="POST">
                                     {{csrf_field()}}
-                                    <div>
+                                    <p class="control">
                                         <textarea id="henk" name="sjaak"></textarea>
-                                    </div>
+                                    </p>
+                                    <p class="control">
                                     <button class="button is-primary" type="submit">
                                         Save
                                     </button>
+                                    </p>
                                 </form>
                             <table class="table ">
                                 <tbody>
