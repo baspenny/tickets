@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Ticket;
+use App\User;
 use Illuminate\Http\Request;
 
 class TicketController extends Controller
@@ -27,7 +28,8 @@ class TicketController extends Controller
 
     public function create()
     {
-        return view('tickets.create');
+        $reps = User::all();
+        return view('tickets.create', compact('reps'));
     }
 
     public function show($id)
@@ -44,12 +46,19 @@ class TicketController extends Controller
 
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'title' => 'required|min:5',
+            'description' => 'required|min:5',
+            'contact_name' => 'required|min:5',
+            'contact_tel_nr' => 'required|min:5'
+        ]);
+
         $ticket = new Ticket($request->all());
         $ticket->ticket_number = $this->getNewTicketNumber();
         $ticket->state_id = 1;
 
         $ticket->save();
-        return back()->with('succes', 'Ticket '. $ticket->ticket_number.' created!');
+        return back()->with('succes', 'Ticket '. $ticket->ticket_number.' created!')->with('ticket_id', $ticket->id);
     }
 
     protected function getNewTicketNumber()

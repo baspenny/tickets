@@ -20,7 +20,7 @@
             integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
             crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-    <script src="{{asset('/js/tinymce/tinymce.min.js')}}"></script
+    <script src="{{asset('/js/tinymce/tinymce.min.js')}}"></script>
     <script>
         window.Laravel = {!! json_encode([
             'csrfToken' => csrf_token(),

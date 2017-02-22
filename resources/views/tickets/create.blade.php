@@ -9,26 +9,61 @@
                     <div class="title">Create ticket</div>
                     @if(session('succes'))
                         <div class="notification is-success">
-                            {{session('succes')}}
+                            <a style="color:white" href="/tickets/{{session('ticket_id')}}">
+                                {{session('succes')}}
+                            </a>
                         </div>
                     @endif
                     <form action="/tickets" method="POST">
                         {{ csrf_field() }}
-                        <label class="label">Title</label>
+                        <label class="label">Title
+                            </label>
                         <p class="control">
-                            <input type="text" placeholder="Ticket title" class="input" name="title">
+                            @if($errors->has('title'))
+                                <input type="text" placeholder="Please provide a title" class="input is-danger" name="title" value="{{old('title')}}">
+                                <div class="notification is-warning">{{$errors->first('title')}}</div>
+                            @else
+                                <input type="text" class="input" name="title" value="{{old('title')}}">
+                            @endif
                         </p>
                         <label class="label">Description</label>
                         <p class="control">
-                            <textarea placeholder="Description" class="textarea" name="description"></textarea>
+                            @if($errors->has('description'))
+                                <textarea class="textarea is-danger" placeholder="Please provide a description" name="description">{{old('description')}}</textarea>
+                                <div class="notification is-warning">{{$errors->first('description')}}</div>
+                            @else
+                                <textarea class="textarea" name="description">{{old('description')}}</textarea>
+                            @endif
                         </p>
                         <label class="label">Contact Name</label>
                         <p class="control">
-                            <input type="text" class="input" name="contact_name">
+                            @if($errors->has('contact_name'))
+                                <input placeholder="Please enter contact name" type="text" class="input is-danger" name="contact_name" value="{{old('contact_name')}}">
+                                <div class="notification is-warning">{{$errors->first('contact_name')}}</div>
+                            @else
+                                <input type="text" class="input" name="contact_name" value="{{old('contact_name')}}">
+                            @endif
                         </p>
                         <label class="label">Contact Phone Number</label>
                         <p class="control">
-                            <input type="text" class="input" name="contact_tel_nr">
+                            @if($errors->has('contact_tel_nr'))
+                                <input placeholder="Please provide telephone number" type="text" class="input is-danger" name="contact_tel_nr" value="{{old('contact_tel_nr')}}">
+                                <div class="notification is-warning">{{$errors->first('contact_tel_nr')}}</div>
+                            @else
+                                <input type="text" class="input" name="contact_tel_nr">
+                            @endif
+                        </p>
+                        <p class="control">
+                            <label class="label">Select the handler (optional)</label>
+                            <span class="select">
+                                <select name="rep_id">
+                                    <option value="">Select</option>
+                                    @foreach($reps as $rep)
+                                        <option value="{{$rep->id}}">{{$rep->FullName}}</option>
+                                    @endforeach
+                                </select>
+                            </span>
+                            
                         </p>
                         <p class="control">
                             <button class="button is-primary">
@@ -43,7 +78,5 @@
             </div>
         </div>
     </div>
-    <script>
-
-    </script>
+    <script>tinymce.init({ selector:'#editor' });</script>
     @endsection

@@ -5,7 +5,16 @@
         <div class="container">
             <div class="columns">
                 <div class="column">
-                    <a href="/tickets/edit/{{$ticket->id}}"><button class="button is-primary">Edit Ticket</button></a>
+                    <a href="/tickets/edit/{{$ticket->id}}">
+                        <button class="button is-primary">
+                            <span class="icon">
+                            <i class="fa fa-pencil"></i>
+                            </span>
+                            <span>
+                                Edit Ticket
+                            </span>
+                        </button>
+                    </a>
                 </div>
             </div>
             <div class="columns">
@@ -23,16 +32,16 @@
                                     </tr>
                                     <tr>
                                         <td>Caller:</td>
-                                        @if($ticket->user)
-                                            <td>{{$ticket->user->FullName}}</td>
+                                        @if($ticket->contact_name)
+                                            <td>{{$ticket->contact_name}}</td>
                                         @else
                                             <td>N/A</td>
                                         @endif
                                     </tr>
                                     <tr>
                                         <td>Telephone No:</td>
-                                        @if($ticket->user)
-                                            <td>{{$ticket->user->telephone_nr}}</td>
+                                        @if($ticket->contact_tel_nr)
+                                            <td>{{$ticket->contact_tel_nr}}</td>
                                         @else
                                             <td>N/A</td>
                                         @endif
