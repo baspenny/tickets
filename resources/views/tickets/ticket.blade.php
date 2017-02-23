@@ -58,6 +58,14 @@
                                         @endif
                                     </tr>
                                     <tr>
+                                        <td>Handler:</td>
+                                        @if($ticket->rep)
+                                            <td>{{$ticket->rep->FullName}}</td>
+                                        @else
+                                            <td>N/A</td>
+                                        @endif
+                                    </tr>
+                                    <tr>
                                         <td>Status</td>
                                         <td>{{$ticket->state->name}}</td>
                                     </tr>
@@ -91,10 +99,10 @@
                                 </form>
                             <table class="table ">
                                 <tbody>
-                                @foreach($ticket->logs as $log)
+                                @foreach($logs as $log)
                                 <tr>
                                     <td>Created by:</td>
-                                    <td>{{$log->user_id}}</td>
+                                    <td>{{$log->user->FullName}}</td>
                                 </tr>
                                 <tr>
                                     <td>Text:</td>

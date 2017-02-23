@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Log;
 use App\Ticket;
 use App\User;
 use Illuminate\Http\Request;
@@ -35,15 +36,19 @@ class TicketController extends Controller
     public function show($id)
     {
         $ticket = Ticket::find($id);
-        return view('tickets.ticket', compact('ticket'));
+        $logs = Log::where('ticket_id', $ticket->id)->get();
+        return view('tickets.ticket', compact('ticket', 'logs'));
     }
 
     public function edit($id)
     {
-
         $ticket = Ticket::find($id);
-        $reps = User::whereNotIn('id', [$ticket->rep_id])->get();
-
+        // If rep is not set, return all reps (users)
+        if($ticket->rep_id != null) {
+            $reps = User::whereNotIn('id', [$ticket->rep_id])->get();
+        } else {
+            $reps = User::all();
+        }
         return view('tickets.edit', compact('ticket', 'reps'));
     }
 

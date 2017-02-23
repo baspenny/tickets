@@ -48,7 +48,12 @@
                                    <label class="label">Assigned to</label>
                                     <span class="select">
                                         <select name="rep_id" id="">
-                                            <option value="{{$ticket->rep_id}}">{{$ticket->rep->FullName}}</option>
+                                            @if($ticket->rep)
+                                                <option value="{{$ticket->rep_id}}">{{$ticket->rep->FullName}}</option>
+                                            @else
+                                                <option value="">Choose rep</option>
+                                            @endif
+
                                             @foreach($reps as $rep)
                                                 <option value="{{$rep->id}}">{{$rep->FullName}}</option>
                                             @endforeach

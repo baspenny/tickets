@@ -10,12 +10,21 @@
                         <thead>
                         <tr>
                             <th>Ticket number</th>
+                            <th>Title</th>
+                            <th>Status</th>
                         </tr>
+
                         </thead>
                         @foreach($tickets as $ticket)
                             <tr>
                                 <td>
                                     <a href="/tickets/{{$ticket->id}}">{{$ticket->ticket_number}}</a>
+                                </td>
+                                <td>
+                                    {{$ticket->title}}
+                                </td>
+                                <td>
+                                    {{$ticket->state->name}}
                                 </td>
                             </tr>
                         @endforeach
