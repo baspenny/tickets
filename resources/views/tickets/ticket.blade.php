@@ -81,7 +81,7 @@
                                 <form action="/tickets/{{$ticket->id}}/logs" method="POST">
                                     {{csrf_field()}}
                                     <p class="control">
-                                        <textarea id="henk" name="sjaak"></textarea>
+                                        <textarea id="logging-text" name="text"></textarea>
                                     </p>
                                     <p class="control">
                                     <button class="button is-primary" type="submit">
@@ -98,7 +98,7 @@
                                 </tr>
                                 <tr>
                                     <td>Text:</td>
-                                    <td>{{$log->text}}</td>
+                                    <td>{!!$log->text!!}</td>
                                 </tr>
                                 @endforeach
                                 </tbody>
@@ -111,7 +111,7 @@
         </div>
     </div>
     <script>
-        tinymce.init({ selector:'#henk' });
+        tinymce.init({ selector:'#logging-text' });
 
         $('#remove-me').on('click', function () {
             $('#success-message').remove();

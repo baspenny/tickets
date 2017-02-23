@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Log;
+use App\Ticket;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LogController extends Controller
 {
@@ -32,9 +35,16 @@ class LogController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        dump($request->all());
+        $ticket = Ticket::find($id);
+        $log = new Log($request->all());
+        $log->ticket_id = $ticket->id;
+        $log->user_id = Auth::user()->id;
+        $log->save();
+
+        return back();
+
     }
 
     /**
