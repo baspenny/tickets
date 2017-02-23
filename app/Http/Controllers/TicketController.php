@@ -40,8 +40,11 @@ class TicketController extends Controller
 
     public function edit($id)
     {
+
         $ticket = Ticket::find($id);
-        dd($ticket);
+        $reps = User::whereNotIn('id', [$ticket->rep_id])->get();
+
+        return view('tickets.edit', compact('ticket', 'reps'));
     }
 
     public function store(Request $request)
@@ -56,9 +59,19 @@ class TicketController extends Controller
         $ticket = new Ticket($request->all());
         $ticket->ticket_number = $this->getNewTicketNumber();
         $ticket->state_id = 1;
-
         $ticket->save();
+
         return back()->with('succes', 'Ticket '. $ticket->ticket_number.' created!')->with('ticket_id', $ticket->id);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $ticket = Ticket::findOrFail($id);
+        $ticket->fill($request->all());
+        $ticket->save();
+
+
+        return redirect('/tickets/'.$ticket->id)->with(['success' => 'Ticket updated and saved!']);
     }
 
     protected function getNewTicketNumber()

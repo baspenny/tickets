@@ -17,8 +17,9 @@ Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
 
 Route::post('/tickets/{id}/logs/', 'LogController@store');
-
+Route::patch('/tickets/update/{id}', 'TicketController@update');
 Route::get('/tickets/create', 'TicketController@create');
+
 Route::get('/tickets', 'TicketController@AllOpenTickets');
 Route::post('/tickets', 'TicketController@store');
 Route::get('/tickets/edit/{id}', 'TicketController@edit');

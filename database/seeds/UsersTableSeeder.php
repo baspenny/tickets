@@ -27,9 +27,9 @@ class UsersTableSeeder extends Seeder
         );
 
         \App\User::create([
-                'first_name' => 'Wendy',
-                'last_name' => 'Penny',
-                'email' => 'w.penny@none.com',
+                'first_name' => 'Han',
+                'last_name' => 'Solo',
+                'email' => 'h.solo@milleniumfalcon.com',
                 'user_type' => 1,
                 'telephone_nr' => '0612345678',
                 'password' => Hash::make('Welkom01')
@@ -37,9 +37,9 @@ class UsersTableSeeder extends Seeder
         );
 
         \App\User::create([
-                'first_name' => 'Jordan',
-                'last_name' => 'Penny',
-                'email' => 'j.penny@none.com',
+                'first_name' => 'Prinses',
+                'last_name' => 'Layla',
+                'email' => 'p.rincess@none.com',
                 'user_type' => 1,
                 'telephone_nr' => '0612345678',
                 'password' => Hash::make('Welkom01')

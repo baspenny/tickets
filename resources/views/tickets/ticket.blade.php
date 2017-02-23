@@ -17,6 +17,17 @@
                     </a>
                 </div>
             </div>
+            @if(session('success'))
+            <div class="columns" id="success-message">
+                <div class="column">
+                    <div class="notification is-success">
+                        <button class="delete" id="remove-me"></button>
+                        {{session('success')}}
+                    </div>
+                </div>
+            </div>
+            @endif
+            </div>
             <div class="columns">
                 <div class="column">
 
@@ -99,5 +110,14 @@
             </div>
         </div>
     </div>
-    <script>tinymce.init({ selector:'#henk' });</script>
+    <script>
+        tinymce.init({ selector:'#henk' });
+
+        $('#remove-me').on('click', function () {
+            $('#success-message').remove();
+        })
+
+
+
+    </script>
 @endsection
