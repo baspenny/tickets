@@ -25,4 +25,5 @@ Route::post('/tickets', 'TicketController@store');
 Route::get('/tickets/edit/{id}', 'TicketController@edit');
 Route::get('/tickets/{id}', 'TicketController@show');
 Route::get('/mytickets', 'TicketController@myOpenTickets');
+Route::delete('/log/{id}', 'LogController@destroy');
 

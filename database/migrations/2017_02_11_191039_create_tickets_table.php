@@ -18,7 +18,7 @@ class CreateTicketsTable extends Migration
             $table->string('ticket_number');
             $table->integer('state_id');
             $table->string('title');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->text('solution')->nullable();
             $table->string('contact_name')->nullable();
             $table->string('contact_tel_nr')->nullable();

@@ -97,20 +97,34 @@
                                     </button>
                                     </p>
                                 </form>
-                            <table class="table ">
-                                <tbody>
                                 @foreach($logs as $log)
-                                <tr>
-                                    <td>Created by:</td>
-                                    <td>{{$log->user->FullName}}</td>
-                                </tr>
-                                <tr>
-                                    <td>Text:</td>
-                                    <td>{!!$log->text!!}</td>
-                                </tr>
+
+                                <div class="card" style="margin-top: 15px">
+                                    <header class="card-header">
+                                        <p class="card-header-title">
+                                        <?php
+                                            $dt = \Carbon\Carbon::parse($log->created_at);
+                                                echo $dt->format('d-m-Y H:i:s');
+                                            ?>
+                                        </p>
+                                    </header>
+
+                                    <div class="card-content">
+                                        <div class="content">
+                                            {!! $log->text !!}
+                                        </div>
+                                    </div>
+                                    <footer class="card-footer">
+                                        <form action="/log/{{$log->id}}" method="POST">
+                                        <input name="_method" type="hidden" value="DELETE">
+                                        {{csrf_field()}}
+                                        <button id="delete-btn" type="submit" class="card-footer-item">Delete</button>
+                                        <a href="#" class="card-footer-item"></a>
+                                        </form>
+                                    </footer>
+                                </div>
+
                                 @endforeach
-                                </tbody>
-                            </table>
                             </div>
                         </div>
                     </div>
@@ -132,6 +146,11 @@
         $('#remove-me').on('click', function () {
             $('#success-message').remove();
         })
+
+        $('#delete-btn').on('click', function(e) {
+            confirm('Berry is mijn beste vriend.');
+        });
+
 
 
 

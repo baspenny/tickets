@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Log;
+use App\State;
 use App\Ticket;
 use App\User;
 use Illuminate\Http\Request;
@@ -49,14 +50,15 @@ class TicketController extends Controller
         } else {
             $reps = User::all();
         }
-        return view('tickets.edit', compact('ticket', 'reps'));
+        $statusses = State::where('id', '<>', $ticket->state_id)->get();
+
+        return view('tickets.edit', compact('ticket', 'reps', 'statusses'));
     }
 
     public function store(Request $request)
     {
         $this->validate($request, [
             'title' => 'required|min:5',
-            'description' => 'required|min:5',
             'contact_name' => 'required|min:5',
             'contact_tel_nr' => 'required|min:5'
         ]);
@@ -74,7 +76,6 @@ class TicketController extends Controller
         $ticket = Ticket::findOrFail($id);
         $ticket->fill($request->all());
         $ticket->save();
-
 
         return redirect('/tickets/'.$ticket->id)->with(['success' => 'Ticket updated and saved!']);
     }

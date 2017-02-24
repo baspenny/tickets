@@ -89,6 +89,9 @@ class LogController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $log = Log::find($id);
+        $log->delete();
+
+        return back();
     }
 }

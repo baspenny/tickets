@@ -62,24 +62,30 @@
                                     </span>
                                         
                                 </p>
-                            </div>
-                        </div>
-                        <div class="tile is-4 is-parent">
-                            <div class="tile is-child box">
                                 <p class="control">
-                                    <label for="" class="label">Description</label>
-                                    <textarea name="description" id="" cols="30" rows="10" class="textarea">{{$ticket->description}}</textarea>
+                                    <label class="label">Status</label>
+                                    <span class="select">
+                                        <select name="state_id" id="">
+                                            @if($ticket->state_id)
+                                                <option value="{{$ticket->state_id}}">{{$ticket->state->name}}</option>
+                                            @endif
+                                            @foreach($statusses as $status)
+                                                <option value="{{$status->id}}">{{$status->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </span>
                                 </p>
                             </div>
                         </div>
-                        <div class="tile is-4 is-parent">
+                        <div class="tile is-parent">
                             <div class="tile is-child box">
-
-
-
+                                <p class="control">
+                                    <label for="" class="label">Description</label>
+                                    <textarea name="description" id="description" cols="30" rows="10" class="textarea">{{$ticket->description}}</textarea>
+                                </p>
                             </div>
-
                         </div>
+
                     </div>
 
                 </div>
@@ -87,4 +93,9 @@
         </div>
         </form>
     </div>
+    <script>tinymce.init({
+        selector:'#description',
+        height: '300'
+        })
+    </script>
 @endsection

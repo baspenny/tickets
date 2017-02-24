@@ -16,24 +16,20 @@
                     @endif
                     <form action="/tickets" method="POST">
                         {{ csrf_field() }}
-                        <label class="label">Title
-                            </label>
+                        <label class="label">Title</label>
                         <p class="control">
                             @if($errors->has('title'))
                                 <input type="text" placeholder="Please provide a title" class="input is-danger" name="title" value="{{old('title')}}">
                                 <div class="notification is-warning">{{$errors->first('title')}}</div>
                             @else
-                                <input type="text" class="input" name="title" value="{{old('title')}}">
+                                <input type="text" class="input" name="title" title="title" value="{{old('title')}}">
                             @endif
                         </p>
                         <label class="label">Description</label>
                         <p class="control">
-                            @if($errors->has('description'))
-                                <textarea class="textarea is-danger" placeholder="Please provide a description" name="description">{{old('description')}}</textarea>
-                                <div class="notification is-warning">{{$errors->first('description')}}</div>
-                            @else
-                                <textarea class="textarea" name="description">{{old('description')}}</textarea>
-                            @endif
+
+                            <textarea title="description" id="description" class="textarea" name="description">{{old('description')}}</textarea>
+
                         </p>
                         <label class="label">Contact Name</label>
                         <p class="control">
@@ -78,5 +74,5 @@
             </div>
         </div>
     </div>
-    <script>tinymce.init({ selector:'#editor' });</script>
+    <script>tinymce.init({ selector:'#description' });</script>
     @endsection
